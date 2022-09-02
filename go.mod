@@ -1,4 +1,4 @@
-module github.com/IBM/sql-query-go-sdk
+module github.com/JMGordon/sql-query-go-sdk
 
 go 1.15
 
