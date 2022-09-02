@@ -30,7 +30,7 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	common "github.com/IBM/sql-query-go-sdk/common"
+	common "github.com/JMGordon/sql-query-go-sdk/common"
 	"github.com/go-openapi/strfmt"
 )
 

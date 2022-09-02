@@ -28,7 +28,7 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/IBM/sql-query-go-sdk/sqlv2"
+	"github.com/JMGordon/sql-query-go-sdk/sqlv2"
 	"github.com/go-openapi/strfmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -41,14 +41,14 @@ var _ = Describe(`SqlV2`, func() {
 		It(`Instantiate service client`, func() {
 			sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 				Authenticator: &core.NoAuthAuthenticator{},
-				InstanceCrn: core.StringPtr(instanceCrn),
+				InstanceCrn:   core.StringPtr(instanceCrn),
 			})
 			Expect(sqlService).ToNot(BeNil())
 			Expect(serviceErr).To(BeNil())
 		})
 		It(`Instantiate service client with error: Invalid URL`, func() {
 			sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
-				URL: "{BAD_URL_STRING",
+				URL:         "{BAD_URL_STRING",
 				InstanceCrn: core.StringPtr(instanceCrn),
 			})
 			Expect(sqlService).To(BeNil())
@@ -56,7 +56,7 @@ var _ = Describe(`SqlV2`, func() {
 		})
 		It(`Instantiate service client with error: Invalid Auth`, func() {
 			sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
-				URL: "https://sqlv2/api",
+				URL:         "https://sqlv2/api",
 				InstanceCrn: core.StringPtr(instanceCrn),
 				Authenticator: &core.BasicAuthenticator{
 					Username: "",
@@ -77,7 +77,7 @@ var _ = Describe(`SqlV2`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"SQL_URL": "https://sqlv2/api",
+				"SQL_URL":       "https://sqlv2/api",
 				"SQL_AUTH_TYPE": "noauth",
 			}
 
@@ -99,7 +99,7 @@ var _ = Describe(`SqlV2`, func() {
 			It(`Create service client using external config and set url from constructor successfully`, func() {
 				SetTestEnvironment(testEnvironment)
 				sqlService, serviceErr := sqlv2.NewSqlV2UsingExternalConfig(&sqlv2.SqlV2Options{
-					URL: "https://testService/api",
+					URL:         "https://testService/api",
 					InstanceCrn: core.StringPtr(instanceCrn),
 				})
 				Expect(sqlService).ToNot(BeNil())
@@ -135,7 +135,7 @@ var _ = Describe(`SqlV2`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"SQL_URL": "https://sqlv2/api",
+				"SQL_URL":       "https://sqlv2/api",
 				"SQL_AUTH_TYPE": "someOtherAuth",
 			}
 
@@ -153,12 +153,12 @@ var _ = Describe(`SqlV2`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"SQL_AUTH_TYPE":   "NOAuth",
+				"SQL_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
 			sqlService, serviceErr := sqlv2.NewSqlV2UsingExternalConfig(&sqlv2.SqlV2Options{
-				URL: "{BAD_URL_STRING",
+				URL:         "{BAD_URL_STRING",
 				InstanceCrn: core.StringPtr(instanceCrn),
 			})
 
@@ -205,7 +205,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -265,7 +265,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -327,7 +327,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -355,7 +355,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -401,7 +401,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -456,7 +456,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -513,7 +513,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -540,7 +540,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -575,14 +575,14 @@ var _ = Describe(`SqlV2`, func() {
 		It(`Instantiate service client`, func() {
 			sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 				Authenticator: &core.NoAuthAuthenticator{},
-				InstanceCrn: core.StringPtr(instanceCrn),
+				InstanceCrn:   core.StringPtr(instanceCrn),
 			})
 			Expect(sqlService).ToNot(BeNil())
 			Expect(serviceErr).To(BeNil())
 		})
 		It(`Instantiate service client with error: Invalid URL`, func() {
 			sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
-				URL: "{BAD_URL_STRING",
+				URL:         "{BAD_URL_STRING",
 				InstanceCrn: core.StringPtr(instanceCrn),
 			})
 			Expect(sqlService).To(BeNil())
@@ -590,7 +590,7 @@ var _ = Describe(`SqlV2`, func() {
 		})
 		It(`Instantiate service client with error: Invalid Auth`, func() {
 			sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
-				URL: "https://sqlv2/api",
+				URL:         "https://sqlv2/api",
 				InstanceCrn: core.StringPtr(instanceCrn),
 				Authenticator: &core.BasicAuthenticator{
 					Username: "",
@@ -611,7 +611,7 @@ var _ = Describe(`SqlV2`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"SQL_URL": "https://sqlv2/api",
+				"SQL_URL":       "https://sqlv2/api",
 				"SQL_AUTH_TYPE": "noauth",
 			}
 
@@ -633,7 +633,7 @@ var _ = Describe(`SqlV2`, func() {
 			It(`Create service client using external config and set url from constructor successfully`, func() {
 				SetTestEnvironment(testEnvironment)
 				sqlService, serviceErr := sqlv2.NewSqlV2UsingExternalConfig(&sqlv2.SqlV2Options{
-					URL: "https://testService/api",
+					URL:         "https://testService/api",
 					InstanceCrn: core.StringPtr(instanceCrn),
 				})
 				Expect(sqlService).ToNot(BeNil())
@@ -669,7 +669,7 @@ var _ = Describe(`SqlV2`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"SQL_URL": "https://sqlv2/api",
+				"SQL_URL":       "https://sqlv2/api",
 				"SQL_AUTH_TYPE": "someOtherAuth",
 			}
 
@@ -687,12 +687,12 @@ var _ = Describe(`SqlV2`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"SQL_AUTH_TYPE":   "NOAuth",
+				"SQL_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
 			sqlService, serviceErr := sqlv2.NewSqlV2UsingExternalConfig(&sqlv2.SqlV2Options{
-				URL: "{BAD_URL_STRING",
+				URL:         "{BAD_URL_STRING",
 				InstanceCrn: core.StringPtr(instanceCrn),
 			})
 
@@ -735,7 +735,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -807,7 +807,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -881,7 +881,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -909,7 +909,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -962,7 +962,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1016,7 +1016,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1072,7 +1072,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1098,7 +1098,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1142,7 +1142,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1197,7 +1197,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1254,7 +1254,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1281,7 +1281,7 @@ var _ = Describe(`SqlV2`, func() {
 				sqlService, serviceErr := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
-					InstanceCrn: core.StringPtr(instanceCrn),
+					InstanceCrn:   core.StringPtr(instanceCrn),
 				})
 				Expect(serviceErr).To(BeNil())
 				Expect(sqlService).ToNot(BeNil())
@@ -1317,7 +1317,7 @@ var _ = Describe(`SqlV2`, func() {
 			sqlService, _ := sqlv2.NewSqlV2(&sqlv2.SqlV2Options{
 				URL:           "http://sqlv2modelgenerator.com",
 				Authenticator: &core.NoAuthAuthenticator{},
-				InstanceCrn: core.StringPtr(instanceCrn),
+				InstanceCrn:   core.StringPtr(instanceCrn),
 			})
 			It(`Invoke NewGetSqlJobOptions successfully`, func() {
 				// Construct an instance of the GetSqlJobOptions model
